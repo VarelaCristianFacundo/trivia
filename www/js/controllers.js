@@ -34,6 +34,20 @@ angular.module('starter.controllers', [])
   $scope.remove = function(chat) {
     Chats.remove(chat);
   };
+
+
+
+
+  $("#enviar").on('click', function(){
+    console.log($('#Iturbe'));
+      alert($('#Iturbe').val());
+  });
+
+
+
+
+
+
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, $timeout, Chats) {
