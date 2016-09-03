@@ -38,10 +38,10 @@ angular.module('starter.controllers', [])
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, $timeout, Chats) {
   $('#enviar').on('click', function(){
-    alert ($stateParams.chatId);
+//    alert ($stateParams.chatId);
   })
   $scope.chat = Chats.get($stateParams.chatId);
-alert ($stateParams.chatId);
+//alert ($stateParams.chatId);
   $scope.preguntas= [];
   var pregRef = new Firebase('https://tp1trivia.firebaseio.com/preguntas');
 

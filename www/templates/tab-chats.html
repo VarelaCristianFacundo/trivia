@@ -4,15 +4,11 @@
 <!--  <strong>{{mensaje.mensaje}}</strong></div>-->
   
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="pregunta in preguntas" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
+      <ion-item class="item-remove-animate item-avatar" ng-repeat="pregunta in preguntas" type="item-text-wrap">
         <img src="../img/interrogante.jpg">
         <h2>{{pregunta.pregunta}}</h2>
-        <p>{{mensaje.mensaje}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
-
-        <ion-option-button class="button-assertive" ng-click="remove(chat)">
-          Delete
-        </ion-option-button>
+        <ion-radio name="{{pregunta}}" class="item-remove-animate item-avatar" ng-repeat="opciones in pregunta.opciones" type="item-text-wrap">
+        {{opciones}}
       </ion-item>
     </ion-list> 
   </ion-content>
