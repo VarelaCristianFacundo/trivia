@@ -35,12 +35,14 @@ angular.module('starter.controllers', [])
     Chats.remove(chat);
   };
 
+  $scope.respuesta = {resp: ''};
 
-
+  $scope.opciones = [];
 
   $("#enviar").on('click', function(){
-    console.log($('#Iturbe'));
-      alert($('#Iturbe').val());
+    //console.log($('#Iturbe'));
+    //  alert($('#Iturbe').val());
+    alert($scope.respuesta.resp);
   });
 
 

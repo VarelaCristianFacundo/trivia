@@ -7,8 +7,11 @@
       <ion-item class="item-remove-animate item-avatar" ng-repeat="pregunta in preguntas" type="item-text-wrap">
         <img src="../img/interrogante.jpg">
         <h2>{{pregunta.pregunta}}</h2>
-        <ion-radio name="{{pregunta}}" id="{{opciones}}" value="{{opciones}}" class="item-remove-animate item-avatar" ng-repeat="opciones in pregunta.opciones" type="item-text-wrap">
-        {{opciones}}
+        <ion-radio name="{{pregunta}}" id="{{pregunta}}" class="item-remove-animate item-avatar" ng-repeat="opcion in pregunta.opciones" type="item-text-wrap" ng-value="opcion" ng-model="respuesta.resp">
+
+        <input type="radio" >
+
+        {{opcion}}
       </ion-item>
     </ion-list> 
 
