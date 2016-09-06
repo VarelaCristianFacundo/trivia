@@ -29,6 +29,7 @@ $scope.opcSelected = {};
   $("#enviar").on('click', function(){
     
     $scope.respOK = 0; //contador de respuestas OK
+    $scope.respFail = 0;
 
         for(var respuesta in $scope.respuestas)
         {           
@@ -37,6 +38,7 @@ $scope.opcSelected = {};
                 $scope.respOK ++;
             }
             else{
+                $scope.respFail++;
          //       alert("Respuesta MAL");   
             }
         }
