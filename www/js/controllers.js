@@ -33,11 +33,11 @@ $scope.opcSelected = {};
         for(var respuesta in $scope.respuestas)
         {           
             if ($scope.respuestas[respuesta] === $scope.opcSelected[respuesta]){
-                alert("Respuesta "+respuesta+": BIEN");
+       //         alert("Respuesta BIEN");
                 $scope.respOK ++;
             }
             else{
-                alert("Respuesta "+respuesta+": MAL");   
+         //       alert("Respuesta MAL");   
             }
         }
   });
