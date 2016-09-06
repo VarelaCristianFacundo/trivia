@@ -1,25 +1,45 @@
 angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope, $timeout) {
-  $('#login').on('click', function(){
+   $scope.usuario =[];
+   $scope.usuarios={};
 
-    var username = $("#nombre").val()
-    alert ("Bienvenido "+username);
-
-    var userRef = new Firebase('https://tp1trivia.firebaseio.com/Usuarios');
+    var userRef = new Firebase('https://tp1trivia.firebaseio.com/usuarios');
 
     userRef.on('child_added', function (snapshot) {
     $timeout(function(){
 
     var user = snapshot.val();
-    console.log(user);
-    //$scope.preguntas.push(preg);
-    //$scope.respuestas[preg.id] = preg.respuesta;
+    $scope.usuario.push(user);
+    console.log($scope.usuario);
 
     });
    });
 
-    
+
+  $('#login').on('click', function(){
+
+    var username = $("#nombre").val();
+    var flag = 0;
+  //alert ("Bienvenido "+username);
+
+        for(var ref in $scope.usuario)
+        {           
+            if ($scope.usuario[ref] === username)
+            {
+                flag = 1;
+                break;
+            }
+        }
+        if (flag == 1)
+        {
+            alert ("Bienvenido " + username);
+        }
+        else
+        {
+            alert ("Usted no es usuario");
+        }
+
   })
 })
 
