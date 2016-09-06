@@ -8,14 +8,9 @@ angular.module('starter.controllers', [])
 
 .controller('ChatsCtrl', function($scope, Chats, $timeout) {
  
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
- $scope.preguntas= [];
+$scope.preguntas= [];
+$scope.respuestas={};
+
   var pregRef = new Firebase('https://tp1trivia.firebaseio.com/preguntas');
 
     pregRef.on('child_added', function (snapshot) {
@@ -23,56 +18,29 @@ angular.module('starter.controllers', [])
 
     var preg = snapshot.val();
    // console.log(preg);
-
     $scope.preguntas.push(preg);
-    console.log($scope.preguntas);  
+    $scope.respuestas[preg.id] = preg.respuesta;
+
     });
    });
 
-
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
-
-  $scope.respuesta = {resp: ''};
-
-  $scope.opciones = [];
+$scope.opcSelected = {};
 
   $("#enviar").on('click', function(){
-    //console.log($('#Iturbe'));
-    //  alert($('#Iturbe').val());
-    alert($scope.respuesta.resp);
+    
+    $scope.respOK = 0; //contador de respuestas OK
+
+        for(var respuesta in $scope.respuestas)
+        {           
+            if ($scope.respuestas[respuesta] === $scope.opcSelected[respuesta]){
+                alert("Respuesta "+respuesta+": BIEN");
+                $scope.respOK ++;
+            }
+            else{
+                alert("Respuesta "+respuesta+": MAL");   
+            }
+        }
   });
-
-
-
-
-
-
-})
-
-.controller('ChatDetailCtrl', function($scope, $stateParams, $timeout, Chats) {
-  $('#enviar').on('click', function(){
-//    alert ($stateParams.chatId);
-  })
-  $scope.chat = Chats.get($stateParams.chatId);
-//alert ($stateParams.chatId);
-  $scope.preguntas= [];
-  var pregRef = new Firebase('https://tp1trivia.firebaseio.com/preguntas');
-
-    pregRef.on('child_added', function (snapshot) {
-    $timeout(function(){
-
-    var preg = snapshot.val();
-   // console.log(preg);
-
-    $scope.preguntas.push(preg);
-    console.log($scope.preguntas);  
-    });
-   });
-
-
 
 })
 
