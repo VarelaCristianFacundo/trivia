@@ -11,7 +11,7 @@ angular.module('starter.controllers', [])
 
     var user = snapshot.val();
     $scope.usuario.push(user);
-    console.log(user.u1);
+//    console.log($scope.usuario);
 
     });
    });
